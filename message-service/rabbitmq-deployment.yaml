@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: rabbitmq
+  template:
+    metadata:
+      labels:
+        component: rabbitmq
+    spec:
+      containers:
+        - name: rabbitmq
+          image: rabbitmq-message-demo
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5672
+            - containerPort: 15672
+            - containerPort: 15671
+          env:
+            - name: RABBITMQ_DEFAULT_USER
+              value: 'rabbitmq'
+            - name: RABBITMQ_DEFAULT_PASS
+              value: 'secret'

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-nginx-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server-nginx
+  template:
+    metadata:
+      labels:
+        component: server-nginx
+    spec:
+      containers:
+        - name: server-nginx
+          image: nginx:1.15.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/nginx/conf.d/
+      volumes:
+        - name: config-volume
+          configMap:
+            name: nginx-config

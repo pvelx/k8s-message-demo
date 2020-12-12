@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-service-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: task-service
+  template:
+    metadata:
+      labels:
+        component: task-service
+    spec:
+      containers:
+        - name: task-service
+          image: task-service
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 50051
+#          env:
+#            - name: APP_ENV
+#              value: 'dev'

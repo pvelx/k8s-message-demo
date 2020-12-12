@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server
+  template:
+    metadata:
+      labels:
+        component: server
+    spec:
+      containers:
+        - name: server
+          image: server-php-fpm
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 9000
+          env:
+            - name: APP_ENV
+              value: 'dev'
+            - name: APP_SECRET
+              value: 'b9ba7d2cf05c762aaffca1994455d142'
+            - name: TASK_GRPC_SERVER_HOST
+              value: 'task-service:50051'
+            - name: MESSENGER_TRANSPORT_DSN
+              value: 'amqp://rabbitmq:secret@rabbitmq-cluster-ip-service:5672/%2f'
+            - name: DATABASE_URL
+              value: 'mysql://user:secret@mysql-cluster-ip-service:3306/db?serverVersion=8.0'
+            - name: CORS_ALLOW_ORIGIN
+              value: '^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$'
