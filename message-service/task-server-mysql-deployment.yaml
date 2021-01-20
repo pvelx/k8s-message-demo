@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: task-server-mysql-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: task-server-mysql
+  template:
+    metadata:
+      labels:
+        component: task-server-mysql
+    spec:
+      volumes:
+        - name: task-server-mysql-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: task-server-mysql-storage
+              mountPath: /var/lib/mysql
+              subPath: task-server-mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: 'secret'
+            - name: MYSQL_DATABASE
+              value: 'task_server'
+            - name: MYSQL_USER
+              value: 'user'
+            - name: MYSQL_PASSWORD
+              value: 'secret'

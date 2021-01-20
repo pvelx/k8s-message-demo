@@ -18,6 +18,34 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 50051
-#          env:
-#            - name: APP_ENV
-#              value: 'dev'
+          env:
+            # grpc server
+            - name: SERVER_HOST
+              value: ':50051'
+
+            # broker
+            - name: MESSENGER_TRANSPORT_DSN
+              value: 'amqp://rabbitmq:secret@rabbitmq-cluster-ip-service:5672/%2f'
+            - name: QUEUE_NAME
+              value: 'task_execute_event'
+            - name: EXCHANGE_NAME
+              value: 'task_execute_event'
+
+            # monitoring
+            - name: INFLUX_DB_DNS
+              value: 'http://influxdb-cluster-ip-service:8086'
+            - name: INFLUX_DB_PASSWORD
+              value: 'secret'
+            - name: INFLUX_DB_USERNAME
+              value: 'monitor'
+
+            # database
+            - name: DATABASE_HOST
+              value: 'task-server-mysql-cluster-ip-service:3306'
+            - name: DATABASE_USER
+              value: 'user'
+            - name: DATABASE_PASSWORD
+              value: 'secret'
+            - name: DATABASE_NAME
+              value: 'task_server'
+
