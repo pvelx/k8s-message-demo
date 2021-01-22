@@ -12,6 +12,11 @@ spec:
       labels:
         component: task-service
     spec:
+      initContainers:
+        - name: wait-db
+          image: server-php-fpm
+          imagePullPolicy: IfNotPresent
+          command: ['sh', '-c', "until nslookup task-server-mysql-cluster-ip-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for db; sleep 2; done"]
       containers:
         - name: task-service
           image: task-service
