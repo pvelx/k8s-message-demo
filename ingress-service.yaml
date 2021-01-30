@@ -11,7 +11,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: server-nginx-service
+                name: message-service-cluster-ip
                 port:
                   number: 80
     - host: "dashboard.message.com"
@@ -21,7 +21,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: client-cluster-ip-service
+                name: message-dashboard-cluster-ip
                 port:
                   number: 3000
     - host: "rabbitmq.message.com"
@@ -31,7 +31,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: rabbitmq-cluster-ip-service
+                name: rabbitmq-message-cluster-ip
                 port:
                   number: 15672
     - host: "monitoring.message.com"
@@ -41,6 +41,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: grafana-cluster-ip-service
+                name: grafana-cluster-ip
                 port:
                   number: 3000

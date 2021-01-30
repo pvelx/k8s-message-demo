@@ -1,35 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mysql-deployment
+  name: message-service-mysql-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: mysql
+      component: message-service-mysql
   template:
     metadata:
       labels:
-        component: mysql
+        component: message-service-mysql
     spec:
       volumes:
-        - name: mysql-storage
+        - name: message-service-mysql-storage
           persistentVolumeClaim:
-            claimName: database-persistent-volume-claim
+            claimName: persistent-volume-claim
       containers:
         - name: mysql
           image: mysql:8.0
           ports:
             - containerPort: 3306
           volumeMounts:
-            - name: mysql-storage
+            - name: message-service-mysql-storage
               mountPath: /var/lib/mysql
-              subPath: mysql
+              subPath: message-service-mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: 'secret'
             - name: MYSQL_DATABASE
-              value: 'db'
+              value: 'message_service'
             - name: MYSQL_USER
               value: 'user'
             - name: MYSQL_PASSWORD
