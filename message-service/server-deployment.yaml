@@ -12,6 +12,18 @@ spec:
       labels:
         component: server
     spec:
+      initContainers:
+        - name: wait-db
+          image: server-php-fpm
+          imagePullPolicy: IfNotPresent
+          command: ['sh', '-c', "until nslookup mysql-cluster-ip-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for db; sleep 2; done"]
+        - name: up-migrations
+          image: server-php-fpm
+          imagePullPolicy: IfNotPresent
+          command: ['sh', '-c', "bin/console doctrine:migrations:migrate -q"]
+          env:
+            - name: DATABASE_URL
+              value: 'mysql://user:secret@mysql-cluster-ip-service:3306/db?serverVersion=8.0'
       containers:
         - name: server
           image: server-php-fpm

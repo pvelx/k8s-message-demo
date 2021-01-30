@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-daemon-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: server-daemon
+  template:
+    metadata:
+      labels:
+        component: server-daemon
+    spec:
+      containers:
+        - name: server-daemon
+          image: server-php-fpm
+          imagePullPolicy: IfNotPresent
+          command: ["/usr/bin/supervisord"]
+          env:
+            - name: APP_ENV
+              value: 'dev'
+            - name: APP_SECRET
+              value: 'b9ba7d2cf05c762aaffca1994455d142'
+            - name: MESSENGER_TRANSPORT_DSN
+              value: 'amqp://rabbitmq:secret@rabbitmq-cluster-ip-service:5672/%2f'
+            - name: DATABASE_URL
+              value: 'mysql://user:secret@mysql-cluster-ip-service:3306/db?serverVersion=8.0'

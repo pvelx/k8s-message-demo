@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: grafana
+  template:
+    metadata:
+      labels:
+        component: grafana
+    spec:
+      volumes:
+        - name: grafana-dashboard
+          configMap:
+            name: grafana-dashboard
+        - name: grafana-datasource-influxdb
+          configMap:
+            name: grafana-datasource-influxdb
+      containers:
+        - name: grafana
+          image: grafana/grafana
+          imagePullPolicy: IfNotPresent
+          volumeMounts:
+            - name: grafana-dashboard
+              mountPath: /etc/grafana/provisioning/dashboards/
+            - name: grafana-datasource-influxdb
+              mountPath: /etc/grafana/provisioning/datasources/
+          ports:
+            - containerPort: 3000
+          env:
+            - name: GF_AUTH_ANONYMOUS_ENABLED
+              value: 'true'
+            - name: GF_AUTH_ANONYMOUS_ORG_ROLE
+              value: 'Admin'
+

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influxdb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: influxdb
+  template:
+    metadata:
+      labels:
+        component: influxdb
+    spec:
+      volumes:
+        - name: influxdb-storage
+          persistentVolumeClaim:
+            claimName: database-persistent-volume-claim
+      containers:
+        - name: influxdb
+          image: influxdb
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8086
+          volumeMounts:
+            - name: influxdb-storage
+              mountPath: /var/lib/influxdb
+              subPath: influxdb
+          env:
+            - name: INFLUXDB_DB
+              value: 'trigger_hook'
+
