@@ -15,7 +15,7 @@ spec:
       volumes:
         - name: influxdb-storage
           persistentVolumeClaim:
-            claimName: database-persistent-volume-claim
+            claimName: persistent-volume-claim
       containers:
         - name: influxdb
           image: influxdb

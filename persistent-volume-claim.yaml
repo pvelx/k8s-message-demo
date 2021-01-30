@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: database-persistent-volume-claim
+  name: persistent-volume-claim
 spec:
   accessModes:
     - ReadWriteOnce

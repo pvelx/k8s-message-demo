@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-dashboard
+  name: grafana-dashboard-config
   namespace: default
 data:
   dashboard.yml: |

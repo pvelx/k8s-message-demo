@@ -1,35 +1,35 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: task-server-mysql-deployment
+  name: trigger-service-mysql-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: task-server-mysql
+      component: trigger-service-mysql
   template:
     metadata:
       labels:
-        component: task-server-mysql
+        component: trigger-service-mysql
     spec:
       volumes:
-        - name: task-server-mysql-storage
+        - name: trigger-service-mysql-storage
           persistentVolumeClaim:
-            claimName: database-persistent-volume-claim
+            claimName: persistent-volume-claim
       containers:
         - name: mysql
           image: mysql:8.0
           ports:
             - containerPort: 3306
           volumeMounts:
-            - name: task-server-mysql-storage
+            - name: trigger-service-mysql-storage
               mountPath: /var/lib/mysql
-              subPath: task-server-mysql
+              subPath: trigger-service-mysql
           env:
             - name: MYSQL_ROOT_PASSWORD
               value: 'secret'
             - name: MYSQL_DATABASE
-              value: 'task_server'
+              value: 'trigger_service'
             - name: MYSQL_USER
               value: 'user'
             - name: MYSQL_PASSWORD

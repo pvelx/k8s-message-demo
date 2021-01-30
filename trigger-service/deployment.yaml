@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: task-service-deployment
+  name: trigger-service-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: task-service
+      component: trigger-service
   template:
     metadata:
       labels:
-        component: task-service
+        component: trigger-service
     spec:
       initContainers:
         - name: wait-db
-          image: server-php-fpm
+          image: trigger-service
           imagePullPolicy: IfNotPresent
-          command: ['sh', '-c', "until nslookup task-server-mysql-cluster-ip-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for db; sleep 2; done"]
+          command: ['sh', '-c', "until nslookup trigger-service-mysql-cluster-ip.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for db; sleep 2; done"]
       containers:
-        - name: task-service
-          image: task-service
+        - name: trigger-service
+          image: trigger-service
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 50051
@@ -30,7 +30,7 @@ spec:
 
             # broker
             - name: MESSENGER_TRANSPORT_DSN
-              value: 'amqp://rabbitmq:secret@rabbitmq-cluster-ip-service:5672/%2f'
+              value: 'amqp://rabbitmq:secret@rabbitmq-message-cluster-ip:5672/%2f'
             - name: QUEUE_NAME
               value: 'task_execute_event'
             - name: EXCHANGE_NAME
@@ -38,7 +38,7 @@ spec:
 
             # monitoring
             - name: INFLUX_DB_DNS
-              value: 'http://influxdb-cluster-ip-service:8086'
+              value: 'http://influxdb-cluster-ip:8086'
             - name: INFLUX_DB_PASSWORD
               value: 'secret'
             - name: INFLUX_DB_USERNAME
@@ -46,11 +46,11 @@ spec:
 
             # database
             - name: DATABASE_HOST
-              value: 'task-server-mysql-cluster-ip-service:3306'
+              value: 'trigger-service-mysql-cluster-ip:3306'
             - name: DATABASE_USER
               value: 'user'
             - name: DATABASE_PASSWORD
               value: 'secret'
             - name: DATABASE_NAME
-              value: 'task_server'
+              value: 'trigger_service'
 

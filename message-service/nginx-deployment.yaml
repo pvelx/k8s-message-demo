@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: server-nginx-deployment
+  name: message-service-nginx-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: server-nginx
+      component: message-service-nginx
   template:
     metadata:
       labels:
-        component: server-nginx
+        component: message-service-nginx
     spec:
       containers:
-        - name: server-nginx
+        - name: message-service-nginx
           image: nginx:1.15.0
           imagePullPolicy: IfNotPresent
           ports:
@@ -24,4 +24,4 @@ spec:
       volumes:
         - name: config-volume
           configMap:
-            name: nginx-config
+            name: message-service-nginx-config

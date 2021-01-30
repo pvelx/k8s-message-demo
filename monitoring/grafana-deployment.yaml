@@ -13,20 +13,20 @@ spec:
         component: grafana
     spec:
       volumes:
-        - name: grafana-dashboard
+        - name: grafana-dashboard-config
           configMap:
-            name: grafana-dashboard
-        - name: grafana-datasource-influxdb
+            name: grafana-dashboard-config
+        - name: grafana-datasource-influxdb-config
           configMap:
-            name: grafana-datasource-influxdb
+            name: grafana-datasource-influxdb-config
       containers:
         - name: grafana
           image: grafana/grafana
           imagePullPolicy: IfNotPresent
           volumeMounts:
-            - name: grafana-dashboard
+            - name: grafana-dashboard-config
               mountPath: /etc/grafana/provisioning/dashboards/
-            - name: grafana-datasource-influxdb
+            - name: grafana-datasource-influxdb-config
               mountPath: /etc/grafana/provisioning/datasources/
           ports:
             - containerPort: 3000

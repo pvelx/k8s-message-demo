@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: nginx-config
+  name: message-service-nginx-config
   namespace: default
 data:
   default.conf: |
@@ -18,7 +18,7 @@ data:
      location ~ ^/index\.php(/|$) {
          client_max_body_size 50m;
 
-         fastcgi_pass server-cluster-ip-service:9000;
+         fastcgi_pass message-service-cluster-ip:9000;
          fastcgi_buffers 16 16k;
          fastcgi_buffer_size 32k;
          include fastcgi_params;

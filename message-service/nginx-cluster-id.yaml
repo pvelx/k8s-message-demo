@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: server-nginx-service
+  name: message-service-nginx-cluster-id
 spec:
   type: ClusterIP
   selector:
-    component: server-nginx
+    component: message-service-nginx
   ports:
     - port: 80
       targetPort: 80
