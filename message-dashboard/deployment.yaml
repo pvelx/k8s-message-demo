@@ -13,11 +13,11 @@ spec:
         component: message-dashboard
     spec:
       containers:
-        - name: client
+        - name: message-dashboard
           image: message-dashboard
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
           env:
-            - name: BACKEND_API
-              value: 'api.message.com'
+            - name: API_URL
+              value: 'http://api.message.com'
