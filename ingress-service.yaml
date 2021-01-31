@@ -11,7 +11,7 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: message-service-cluster-ip
+                name: message-service-nginx-cluster-id
                 port:
                   number: 80
     - host: "dashboard.message.com"

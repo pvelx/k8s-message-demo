@@ -23,7 +23,7 @@ spec:
           command: ['sh', '-c', "bin/console doctrine:migrations:migrate -q"]
           env:
             - name: DATABASE_URL
-              value: 'mysql://user:secret@message-service-mysql-cluster-ip:3306/db?serverVersion=8.0'
+              value: 'mysql://user:secret@message-service-mysql-cluster-ip:3306/message_service?serverVersion=8.0'
       containers:
         - name: message-service
           image: message-service

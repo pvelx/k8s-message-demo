@@ -7,7 +7,7 @@ minikube start --vm-driver=parallels
 minikube addons enable ingress
 
 eval $(minikube docker-env)
-docker build -t message-dashboard:latest -t message-dashboard:$SHA -f ../message-dashboard-demo/Dockerfile.dev ../message-dashboard-demo/
+docker build -t message-dashboard:latest -t message-dashboard:$SHA -f ../message-dashboard-demo/Dockerfile ../message-dashboard-demo/
 docker build -t message-service:latest -t message-service:$SHA -f ../message-service-demo/docker/Dockerfile ../message-service-demo/
 docker build -t rabbitmq-message:latest -t rabbitmq-message:$SHA -f ./rabbitmq/Dockerfile ./rabbitmq
 docker build -t trigger-service:latest -t trigger-service:$SHA -f ../trigger-service-demo/Dockerfile ../trigger-service-demo/
