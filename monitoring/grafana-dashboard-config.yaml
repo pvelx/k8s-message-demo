@@ -101,7 +101,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "countOfAllTasks",
+              "measurement": "all",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -373,7 +373,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "speedOfCreating",
+              "measurement": "creatingRate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -498,7 +498,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "speedOfPreloading",
+              "measurement": "preloadingRate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -623,7 +623,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "speedOfConfirmation",
+              "measurement": "confirmationRate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -749,7 +749,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "speedOfSending",
+              "measurement": "sendingRate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -1001,7 +1001,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "countOfWaitingForSending",
+              "measurement": "waitingForSending",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -1126,7 +1126,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "speedOfDeleting",
+              "measurement": "deletingRate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
