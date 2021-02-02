@@ -32,9 +32,7 @@ spec:
             - containerPort: 9000
           env:
             - name: APP_ENV
-              value: 'dev'
-            - name: APP_SECRET
-              value: 'b9ba7d2cf05c762aaffca1994455d142'
+              value: 'prod'
             - name: TASK_GRPC_SERVER_HOST
               value: 'trigger-service-cluster-ip:50051'
             - name: MESSENGER_TRANSPORT_DSN
@@ -42,4 +40,4 @@ spec:
             - name: DATABASE_URL
               value: 'mysql://user:secret@message-service-mysql-cluster-ip:3306/message_service?serverVersion=8.0'
             - name: CORS_ALLOW_ORIGIN
-              value: '^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?$'
+              value: '^https?://dashboard\.message\.com$'

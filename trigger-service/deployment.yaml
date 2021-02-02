@@ -30,9 +30,7 @@ spec:
 
             # broker
             - name: MESSENGER_TRANSPORT_DSN
-              value: 'amqp://rabbitmq:secret@rabbitmq-message-cluster-ip:5672/%2f'
-            - name: QUEUE_NAME
-              value: 'task_execute_event'
+              value: 'amqp://rabbitmq:secret@rabbitmq-message-cluster-ip:5672/'
             - name: EXCHANGE_NAME
               value: 'task_execute_event'
 
