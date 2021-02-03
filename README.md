@@ -1,5 +1,4 @@
-Это приложение является демострацией работы 
-[Trigger Hook](https://github.com/pvelx/triggerhook).  
+##Демонстрация работы [Trigger Hook](https://github.com/pvelx/triggerhook).  
 
 Приложение разворачивается при помощи Kubernetes.
 
