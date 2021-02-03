@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: message-dashboard
-          image: message-dashboard
+          image: metalom/message-dashboard:1.0
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000
