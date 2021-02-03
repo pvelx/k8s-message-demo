@@ -3,6 +3,7 @@
 Приложение разворачивается при помощи Kubernetes.
 
 <br/>
+
 ---
 
 ### Общая схема взаимодействия
@@ -16,6 +17,7 @@
 - **[Trigger service](https://github.com/pvelx/trigger-service-demo)** - сервис реализует механизм отложенного выполенения задач. Построен на безе [Trigger Hook](https://github.com/pvelx/triggerhook).
 
 <br/>
+
 ---
 
 ### Локальное развертывание
