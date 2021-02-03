@@ -33,13 +33,11 @@ minikube start --vm-driver=parallels
 ```
 #### Клонирование репозиториев проекта:
 ```bash
-mkdir trigger-hook-demo && trigger-hook-demo
+mkdir trigger-hook-demo && cd trigger-hook-demo
 
 git clone https://github.com/pvelx/k8s-message-demo.git
 
-cd k8s-message-demo
-
-./download.sh
+cd k8s-message-demo && ./download.sh
 ```
 
 #### Развертывание на виртуальной машине:

@@ -53,7 +53,7 @@ trigger-service)
   docker build \
     -t trigger-service:latest \
     -t trigger-service:$version \
-    -f ../trigger-service-demo/docker/Dockerfile \
+    -f ../trigger-service-demo/Dockerfile \
     ../trigger-service-demo/
   kubectl apply -f ./trigger-service/
   kubectl set image deployments/trigger-service-deployment trigger-service=trigger-service:$version
