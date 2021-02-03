@@ -41,6 +41,8 @@ spec:
               value: 'secret'
             - name: INFLUX_DB_USERNAME
               value: 'monitor'
+            - name: INFLUX_DB_NAME
+              value: 'trigger_hook'
 
             # database
             - name: DATABASE_HOST
