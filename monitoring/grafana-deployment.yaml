@@ -22,7 +22,6 @@ spec:
       containers:
         - name: grafana
           image: grafana/grafana
-          imagePullPolicy: IfNotPresent
           volumeMounts:
             - name: grafana-dashboard-config
               mountPath: /etc/grafana/provisioning/dashboards/

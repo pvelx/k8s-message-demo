@@ -14,12 +14,10 @@ spec:
     spec:
       containers:
         - name: rabbitmq-message
-          image: rabbitmq-message
-          imagePullPolicy: IfNotPresent
+          image: rabbitmq:3.8-management-alpine
           ports:
             - containerPort: 5672
             - containerPort: 15672
-            - containerPort: 15671
           env:
             - name: RABBITMQ_DEFAULT_USER
               value: 'rabbitmq'

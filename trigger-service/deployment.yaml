@@ -15,7 +15,6 @@ spec:
       initContainers:
         - name: wait-db
           image: alpine:3.7
-          imagePullPolicy: IfNotPresent
           command: ['sh', '-c', "until nslookup trigger-service-mysql-cluster-ip.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for db; sleep 2; done"]
       containers:
         - name: trigger-service
