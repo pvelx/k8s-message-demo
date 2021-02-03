@@ -48,21 +48,23 @@ mkdir trigger-hook-demo && cd trigger-hook-demo
 
 git clone https://github.com/pvelx/k8s-message-demo.git
 
-cd k8s-message-demo && ./download.sh
+cd k8s-message-demo && ./download
 ```
 
 <br/>
 
 Развертывание на виртуальной машине:
 ```bash
-./deploy.sh
+./deploy
 ```
+
+Может быть потрачено около 10 мин на скачивание образов контейнеров и их запуск прежде чем, приложение полностью заработает.
 
 <br/>
 
 Для доступа сервисам с локальной машины нужно выполнить:
 ```bash
-./update_hosts.sh
+./update_hosts
 ```
 С развернутого хоста станут доступны сервисы по ссылкам:
 - [dashboard.message.com](http://dashboard.message.com)
@@ -85,15 +87,15 @@ minikube dashboard
 После изменений кода в одном из сервисов нужно будет его пересобрать:
 
 ```bash
-./build.sh trigger-service
+./build trigger-service
 ```
 
 ```bash
-./build.sh message-service
+./build message-service
 ```
 
 ```bash
-./build.sh message-dashboard
+./build message-dashboard
 ```
 
 <br/>
@@ -101,7 +103,7 @@ minikube dashboard
 #### Удаление
 Для удаления сервисов из виртуальной машины можно использовать:
 ```bash
-./undeploy.sh
+./undeploy
 ```
 
 <br/>
