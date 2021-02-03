@@ -15,7 +15,6 @@ spec:
       containers:
         - name: message-service-nginx
           image: nginx:1.15.0
-          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
           volumeMounts:

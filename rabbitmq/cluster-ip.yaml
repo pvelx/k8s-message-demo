@@ -13,6 +13,3 @@ spec:
     - name: panel
       port: 15672
       targetPort: 15672
-    - name: panel2
-      port: 15671
-      targetPort: 15671

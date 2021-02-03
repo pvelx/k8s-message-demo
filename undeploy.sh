@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo 'start install'
-minikube addons enable ingress
-kubectl apply \
+echo 'start uninstall'
+kubectl delete \
     -f ./rabbitmq/ \
     -f ./message-dashboard/ \
     -f ./message-service/ \
     -f ./monitoring/ \
     -f ./trigger-service/ \
     -f ./shared/
-echo 'end install'
+minikube addons disable ingress
+echo 'end uninstall'

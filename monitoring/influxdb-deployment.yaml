@@ -19,7 +19,6 @@ spec:
       containers:
         - name: influxdb
           image: influxdb
-          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8086
           volumeMounts:
