@@ -1,8 +1,10 @@
 Это приложение является демострацией работы 
 [Trigger Hook](https://github.com/pvelx/triggerhook).  
 
-
 Приложение разворачивается при помощи Kubernetes.
+
+### Общая схема взаимодействия
+![Общая схема взаимодействия](./services.png)
 
 Состоит из 5 микросервисов:
 - **[Admin Dashboard](https://github.com/pvelx/message-dashboard-demo)** - панель администратора для доступа к API сервиса Message. Интерфейс построен на базе фреймворка Vue.
@@ -91,6 +93,4 @@ minikube stop
 minikube delete
 ```
 
-### Общая схема взаимодействия
-![](./scheme.png)
 
