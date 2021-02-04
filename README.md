@@ -6,7 +6,7 @@
 
 
 
-![Общая схема взаимодействия](./schema.png)
+![Общая схема взаимодействия](./service_scheme.png)
 
 - **[Admin Dashboard](https://github.com/pvelx/message-dashboard-demo)** - панель администратора для доступа к API сервиса Message. Интерфейс построен на базе фреймворка Vue.
 - **[Message service](https://github.com/pvelx/message-service-demo)** - отвечает за управление сообщениями. Создание, удаление, отложенная отправка. Написан на базе фреймворка Symfony 5 (PHP).
