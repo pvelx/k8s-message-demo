@@ -373,7 +373,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "creatingRate",
+              "measurement": "creating_rate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -498,7 +498,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "preloadingRate",
+              "measurement": "preloading_rate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -623,7 +623,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "confirmationRate",
+              "measurement": "confirmation_rate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -749,7 +749,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "sendingRate",
+              "measurement": "sending_rate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -875,7 +875,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "waitingForConfirmation",
+              "measurement": "waiting_for_confirmation",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -1001,7 +1001,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "waitingForSending",
+              "measurement": "waiting_for_sending",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
@@ -1126,7 +1126,7 @@ data:
                   "type": "fill"
                 }
               ],
-              "measurement": "deletingRate",
+              "measurement": "deleting_rate",
               "orderByTime": "ASC",
               "policy": "default",
               "refId": "A",
