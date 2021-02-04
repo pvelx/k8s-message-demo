@@ -18,7 +18,7 @@ spec:
           command: ['sh', '-c', "until nslookup trigger-service-mysql-cluster-ip.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for db; sleep 2; done"]
       containers:
         - name: trigger-service
-          image: metalom/trigger-service:1.0
+          image: metalom/trigger-service:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 50051
