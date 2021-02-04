@@ -69,7 +69,7 @@ cd k8s-message-demo && ./download
 С развернутого хоста станут доступны сервисы по ссылкам:
 - [dashboard.message.com](http://dashboard.message.com)
 - [api.message.com](http://api.message.com)
-- [monitoring.message.com](http://monitoring.message.com)
+- [monitoring.message.com](http://monitoring.message.com/d/yw-A1jaMk/task-service)
 - [rabbitmq.message.com](http://rabbitmq.message.com)  
     login:rabbitmq  
     password:secret
