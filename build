@@ -3,16 +3,16 @@
 service=$1
 eval $(minikube docker-env)
 
-deleteOldImages(){
-  docker rmi $(docker images "$service" --format "{{.ID}}")
+deleteOldImages() {
+  docker rmi $(docker images "$service" --format "{{.ID}}") -f
 }
 
 newVersion() {
   currentVersion=$(docker images "$service" --format "{{.Tag}}" | sort -rn | head -n 1)
-  currentVersion="$((currentVersion + 1))"
-  if [ "$currentVersion" -gt "255" ]
-  then
+  if [ "$currentVersion" -gt "200" ] || ! [[ "$currentVersion" =~ ^[0-9]+$ ]]; then
     currentVersion=1
+  else
+    currentVersion="$((currentVersion + 1))"
   fi
 
   return "$currentVersion"
