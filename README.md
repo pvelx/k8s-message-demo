@@ -2,8 +2,6 @@
 
 The application is deployed using Kubernetes.
 
-<br/>
-
 ![General scheme](./service_scheme.png)
 
 - **[Message dashboard](https://github.com/pvelx/message-dashboard-demo)** - admin panel for accessing the Message API. The interface is based on the Vue framework.
@@ -12,12 +10,8 @@ The application is deployed using Kubernetes.
 - **Monitoring** - monitoring the Trigger service. The displayed metrics are described [here](https://github.com/pvelx/triggerhook#principle-of-operation). Built on the basis of InfluxDb + Grafana.
 - **[Trigger service](https://github.com/pvelx/trigger-service-demo)** - the service implements the deferred task execution mechanism. Built on the basis of [Trigger Hook](https://github.com/pvelx/triggerhook).
 
-<br/>
-
----
 
 ### Local deployment
-#### Requirements
 First of all, the following applications must be installed:
 - docker
 - kubectl
@@ -25,8 +19,6 @@ First of all, the following applications must be installed:
 - git
 
 For macOS, it is better to additionally install Virtualbox or Parallels as a driver. Docker as a driver on this system may be slow. 
-
-<br/>
 
 #### Launch
 You can use a non-standard driver, such as Virtualbox or Parallels.
@@ -79,8 +71,6 @@ Opening the Kubernetes Dashboard:
 minikube dashboard
 ```
 
-<br/>
-
 #### Rebuilding services
 After changing the code in one of the services, you will need to rebuild it:
 
@@ -96,8 +86,6 @@ After changing the code in one of the services, you will need to rebuild it:
 ./build message-dashboard
 ```
 
-<br/>
-
 #### Remove
 To remove services from a VM, you can use:
 ```bash
@@ -111,7 +99,6 @@ For complete deletion:
 minikube stop
 minikube delete
 ```
-
 
 ### License
 
