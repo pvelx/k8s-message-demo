@@ -14,11 +14,11 @@ spec:
     spec:
       initContainers:
         - name: wait-db
-          image: metalom/message-service:1.0
+          image: metalom/message-service:latest
           imagePullPolicy: IfNotPresent
           command: ['sh', '-c', "until nslookup message-service-mysql-cluster-ip.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for db; sleep 2; done"]
         - name: up-migrations
-          image: metalom/message-service:1.0
+          image: metalom/message-service:latest
           imagePullPolicy: IfNotPresent
           command: ['sh', '-c', "bin/console doctrine:migrations:migrate -q"]
           env:
@@ -26,7 +26,7 @@ spec:
               value: 'mysql://user:secret@message-service-mysql-cluster-ip:3306/message_service?serverVersion=8.0'
       containers:
         - name: message-service
-          image: metalom/message-service:1.0
+          image: metalom/message-service:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 9000
