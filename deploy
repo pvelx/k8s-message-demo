@@ -1,7 +1,6 @@
 #!/bin/bash
 
 echo 'start install'
-minikube addons enable ingress
 kubectl apply \
     -f ./rabbitmq/ \
     -f ./message-dashboard/ \
@@ -9,4 +8,5 @@ kubectl apply \
     -f ./monitoring/ \
     -f ./trigger-service/ \
     -f ./shared/
+minikube addons enable ingress
 echo 'end install'
