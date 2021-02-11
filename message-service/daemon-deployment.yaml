@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: message-service-daemon
-          image: metalom/message-service:1.0
+          image: metalom/message-service:latest
           imagePullPolicy: IfNotPresent
           command: ["/usr/bin/supervisord"]
           env:
