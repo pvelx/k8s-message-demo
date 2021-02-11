@@ -1,48 +1,46 @@
-## Демонстрация работы [Trigger Hook](https://github.com/pvelx/triggerhook).  
+## Demo of the [Trigger Hook](https://github.com/pvelx/triggerhook).  
 
-Приложение разворачивается при помощи Kubernetes.
+The application is deployed using Kubernetes.
 
 <br/>
 
+![General scheme](./service_scheme.png)
 
-
-![Общая схема взаимодействия](./service_scheme.png)
-
-- **[Admin Dashboard](https://github.com/pvelx/message-dashboard-demo)** - панель администратора для доступа к API сервиса Message. Интерфейс построен на базе фреймворка Vue.
-- **[Message service](https://github.com/pvelx/message-service-demo)** - отвечает за управление сообщениями. Создание, удаление, отложенная отправка. Написан на базе фреймворка Symfony 5 (PHP).
-- **Broker** - брокер сообщений RabbitMQ для асинхронного взаимодействия.
-- **Monitoring** - мониторинг сервиса Trigger. Отображаемые метрики описаны [тут](https://github.com/pvelx/triggerhook#%D0%BF%D1%80%D0%B8%D0%BD%D1%86%D0%B8%D0%BF-%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D1%8B). Построен на базе InfluxDb + Grafana.
-- **[Trigger service](https://github.com/pvelx/trigger-service-demo)** - сервис реализует механизм отложенного выполенения задач. Построен на безе [Trigger Hook](https://github.com/pvelx/triggerhook).
+- **[Message dashboard](https://github.com/pvelx/message-dashboard-demo)** - admin panel for accessing the Message API. The interface is based on the Vue framework.
+- **[Message service](https://github.com/pvelx/message-service-demo)** - responsible for managing messages. Creating, deleting, and deferred sending. It is written on the basis of the Symfony 5 framework (PHP).
+- **Broker** - RabbitMQ message broker for asynchronous communication.
+- **Monitoring** - monitoring the Trigger service. The displayed metrics are described [here](https://github.com/pvelx/triggerhook#principle-of-operation). Built on the basis of InfluxDb + Grafana.
+- **[Trigger service](https://github.com/pvelx/trigger-service-demo)** - the service implements the deferred task execution mechanism. Built on the basis of [Trigger Hook](https://github.com/pvelx/triggerhook).
 
 <br/>
 
 ---
 
-### Локальное развертывание
-#### Предварительные требования
-Прежде всего должны быть установлены следующие приложения:
+### Local deployment
+#### Requirements
+First of all, the following applications must be installed:
 - docker
 - kubectl
 - minikube
 - git
 
-Для MacOs в качесве драйвера лучше дополнительно установить virtualbox или parallels. Docker в качестве драйвера на данной системе может работать медленно. 
+For macOS, it is better to additionally install Virtualbox or Parallels as a driver. Docker as a driver on this system may be slow. 
 
 <br/>
 
-#### Запуск
-Вы можете использовать не стандартный драйвер, например, virtualbox или parallels.
+#### Launch
+You can use a non-standard driver, such as Virtualbox or Parallels.
 ```bash
 minikube start
 ```
-или
+or
 ```bash
 minikube start --vm-driver=parallels
 ```
 
 <br/>
 
-Клонирование репозиториев проекта:
+Clone the repositories of the project:
 ```bash
 mkdir trigger-hook-demo && cd trigger-hook-demo
 
@@ -53,20 +51,20 @@ cd k8s-message-demo && ./download
 
 <br/>
 
-Развертывание на виртуальной машине:
+Deploying to a VM:
 ```bash
 ./deploy
 ```
 
-Может быть потрачено около 10 мин на скачивание образов контейнеров и их запуск прежде чем, приложение полностью заработает.
+It may take about 10 minutes to download container images and launch them before the app is fully operational.
 
 <br/>
 
-Для доступа сервисам с локальной машины нужно выполнить:
+To access the services from the local machine, you need to run:
 ```bash
 ./update_hosts
 ```
-С развернутого хоста станут доступны сервисы по ссылкам:
+From the deployed host, services will be available via links:
 - [dashboard.message.com](http://dashboard.message.com)
 - [api.message.com](http://api.message.com)
 - [monitoring.message.com](http://monitoring.message.com/d/yw-A1jaMk/task-service)
@@ -76,15 +74,15 @@ cd k8s-message-demo && ./download
 
 <br/>
 
-Открытие приборной панели Kubernetes:
+Opening the Kubernetes Dashboard:
 ```bash
 minikube dashboard
 ```
 
 <br/>
 
-#### Пересборка сервисов
-После изменений кода в одном из сервисов нужно будет его пересобрать:
+#### Rebuilding services
+After changing the code in one of the services, you will need to rebuild it:
 
 ```bash
 ./build trigger-service
@@ -100,15 +98,15 @@ minikube dashboard
 
 <br/>
 
-#### Удаление
-Для удаления сервисов из виртуальной машины можно использовать:
+#### Remove
+To remove services from a VM, you can use:
 ```bash
 ./undeploy
 ```
 
 <br/>
 
-Для полного удаления:
+For complete deletion:
 ```bash
 minikube stop
 minikube delete
