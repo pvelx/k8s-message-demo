@@ -1,6 +1,6 @@
 ## Demo of the [Trigger Hook](https://github.com/pvelx/triggerhook).  
 
-The application is deployed using Kubernetes.
+Configuration of the demo application infrastructure in the Kubernetes cluster.
 
 ![General scheme](./service_scheme.png)
 
