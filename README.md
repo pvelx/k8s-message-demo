@@ -2,6 +2,8 @@
 
 Configuration of the demo application infrastructure in the Kubernetes cluster.
 
+For a deeper understanding, read [this article](https://vlad-pavlenko.medium.com/deferred-tasks-in-a-microservice-architecture-8e7273089ee7).
+
 ![General scheme](./service_scheme.png)
 
 - **[Message dashboard](https://github.com/pvelx/message-dashboard-demo)** - admin panel for accessing the Message API. The interface is based on the Vue framework.
